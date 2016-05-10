@@ -83,16 +83,4 @@
             android:text="ACTUALISER"
             android:id="@+id/bou_actu_hor"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Retour"
-            android:id="@+id/itineraires_retour"/>
-    </LinearLayout>
-
 </LinearLayout>
