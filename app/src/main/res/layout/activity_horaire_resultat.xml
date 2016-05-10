@@ -74,15 +74,16 @@
             android:text=""/>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:text="ACTUALISER"
             android:id="@+id/bou_actu_hor"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
