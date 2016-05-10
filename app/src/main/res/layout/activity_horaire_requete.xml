@@ -30,10 +30,11 @@
                 android:layout_height="wrap_content"
                 android:text="Ligne : "
                 />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/champ_ligne"/>
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="                  "
+            android:id="@+id/horaire_ligne"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,11 +46,11 @@
                 android:layout_height="wrap_content"
                 android:text="Arrêt : "
                 />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/champ_arret"/>
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="                  "
+            android:id="@+id/horaire_arret"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

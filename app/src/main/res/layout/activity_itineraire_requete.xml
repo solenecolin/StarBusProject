@@ -65,21 +65,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="À partir de : "/>
+            android:text="À partir de : "
+           />
         <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-            android:hint="00"
-        android:id="@+id/itineraire_heure"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" h " />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="00"
-            android:id="@+id/itineraire_minute"/>
+            android:hint="00h00"
+        android:id="@+id/itineraire_heure"
+            android:onClick="choisirHeure"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +83,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HORAIRES"
+            android:text="ITINÉRAIRES"
             android:id="@+id/bou_itineraire_chercher"/>
     </LinearLayout>
 

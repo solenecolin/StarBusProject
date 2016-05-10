@@ -1,5 +1,7 @@
 package com.example.ensai.starbusproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +9,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.TimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class itineraire_requete extends AppCompatActivity implements View.OnClickListener {
 
     Button bou_res = null;
+    EditText itineraire_heure = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +27,17 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_itineraire_requete);
         bou_res = (Button) findViewById(R.id.bou_itineraire_chercher);
 
+        itineraire_heure = (EditText) findViewById(R.id.itineraire_heure);
 
-
-
-        final AutoCompleteTextView autoComplete = (AutoCompleteTextView) findViewById(R.id.itineraire_depart);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        final AutoCompleteTextView itineraire_depart = (AutoCompleteTextView) findViewById(R.id.itineraire_depart);
+        ArrayAdapter<String> itineraire_depart_bdd = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        autoComplete.setAdapter(adapter);
+        itineraire_depart.setAdapter(itineraire_depart_bdd);
+
+        final AutoCompleteTextView itineraire_destination = (AutoCompleteTextView) findViewById(R.id.itineraire_destination);
+        ArrayAdapter<String> itineraire_destination_bdd = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        itineraire_destination.setAdapter(itineraire_destination_bdd);
         bou_res.setOnClickListener(this);
     }
 
@@ -40,5 +52,17 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
             Intent intent = new Intent(this, itineraire_resultat.class);
             startActivity(intent);
         }
+    }
+
+    public void choisirHeure(View v) {
+        final TimePicker picker = new TimePicker(this);
+        picker.setHour(11);
+        picker.setIs24HourView(true);
+        new AlertDialog.Builder(this).setView(picker).setNegativeButton("Annuler",null).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                itineraire_heure.setText(picker.getHour() + ":" + picker.getMinute());
+            }
+        }).show();
     }
 }
