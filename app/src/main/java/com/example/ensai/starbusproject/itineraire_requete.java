@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.AutoCompleteTextView;
 
-import static com.example.ensai.starbusproject.R.id.itineraire_depart;
 
 public class itineraire_requete extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,11 +19,13 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_itineraire_requete);
         bou_res = (Button) findViewById(R.id.bou_itineraire_chercher);
 
+
+
+
+        final AutoCompleteTextView autoComplete = (AutoCompleteTextView) findViewById(R.id.itineraire_depart);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(itineraire_depart);
-        textView.setAdapter(adapter);
+        autoComplete.setAdapter(adapter);
         bou_res.setOnClickListener(this);
     }
 
