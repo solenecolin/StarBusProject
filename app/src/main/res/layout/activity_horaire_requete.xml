@@ -9,7 +9,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.example.ensai.starbusproject.Horaire_requete">
-<LinearLayout
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="            "
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HORAIRES"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+    </RelativeLayout>
+
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -17,10 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ligne : " />
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ligne : " />
+        android:text="" />
 </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,11 +51,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Arrêt" />
-        <TextView
+            android:text="Arrêt : " />
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ligne : " />
+            android:text="" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Arrêt" />
+            android:text="Direction : " />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
