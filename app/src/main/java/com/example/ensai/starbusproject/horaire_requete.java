@@ -35,11 +35,11 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
                 ligne = champ_ligne.getText().toString();
                 arret = champ_arret.getText().toString();
                 direction = champ_direction.getText().toString();
-                Intent i = new Intent(this, horaire_resultat.class);
-                i.putExtra("ligne", ligne);
-                i.putExtra("arret", arret);
-                i.putExtra("direction", direction);
-                startActivity(i);
+                Intent intent = new Intent(this, horaire_resultat.class);
+                intent.putExtra("ligne", ligne);
+                intent.putExtra("arret", arret);
+                intent.putExtra("direction", direction);
+                startActivity(intent);
             }
         }
         catch (Exception e){

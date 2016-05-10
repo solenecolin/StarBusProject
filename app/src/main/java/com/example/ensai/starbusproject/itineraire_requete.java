@@ -36,8 +36,8 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
 
     public void onClick(View v) {
         if (v.getId() == R.id.bou_itineraire_chercher) {
-            Intent i = new Intent(this, itineraire_resultat.class);
-            startActivity(i);
+            Intent intent = new Intent(this, itineraire_resultat.class);
+            startActivity(intent);
         }
     }
 }

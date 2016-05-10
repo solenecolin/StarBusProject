@@ -19,8 +19,8 @@ public class horaire_resultat extends AppCompatActivity {
         res_ligne = (TextView) findViewById(R.id.res_ligne);
         res_arret = (TextView) findViewById(R.id.res_arret);
         res_direction = (TextView) findViewById(R.id.res_direction);
-        res_ligne.setText(intent.getIntExtra("ligne", -1));
-        res_arret.setText(intent.getIntExtra("arret", -1));
-        res_direction.setText(intent.getIntExtra("direction", -1));
+        res_ligne.setText(intent.getStringExtra("ligne"));
+        res_arret.setText(intent.getStringExtra("arret"));
+        res_direction.setText(intent.getStringExtra("direction"));
     }
 }
