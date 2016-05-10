@@ -31,7 +31,8 @@
             android:text="Ligne : " />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/res_ligne"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:id="@+id/res_arret"/>
     </LinearLayout>
 
     <LinearLayout
@@ -55,10 +56,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Direction : " />
+            android:text="Direction : "/>
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/res_direction">
         </TextView>
     </LinearLayout>
 

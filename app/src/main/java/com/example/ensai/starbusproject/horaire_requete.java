@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class horaire_requete extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,12 +30,20 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.bou_cher_hor) {
-            Intent i = new Intent(this, horaire_resultat.class);
-            i.putExtra("ligne", ligne);
-            i.putExtra("arret", arret);
-            i.putExtra("direction", direction);
-            startActivity(i);
+        try {
+            if (v.getId() == R.id.bou_cher_hor) {
+                ligne = champ_ligne.getText().toString();
+                arret = champ_arret.getText().toString();
+                direction = champ_direction.getText().toString();
+                Intent i = new Intent(this, horaire_resultat.class);
+                i.putExtra("ligne", ligne);
+                i.putExtra("arret", arret);
+                i.putExtra("direction", direction);
+                startActivity(i);
+            }
+        }
+        catch (Exception e){
+            Toast.makeText(this, "erreur", Toast.LENGTH_LONG).show();
         }
     }
 }
