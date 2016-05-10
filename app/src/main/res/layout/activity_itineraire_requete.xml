@@ -83,16 +83,5 @@
             android:id="@+id/itineraire_chercher"/>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Retour"
-            android:id="@+id/bou_ret_hor_main"/>
-    </RelativeLayout>
 
 </LinearLayout>
