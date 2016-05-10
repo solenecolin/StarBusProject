@@ -30,7 +30,8 @@
             android:text="Départ : " />
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/itineraire_depart" />
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -47,7 +48,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:text=""
+            android:id="@+id/itineraire_destination"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -64,7 +66,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:text=""
+            android:id="@+id/itineraire_horaire"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
