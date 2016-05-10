@@ -11,13 +11,12 @@
     tools:context="com.example.ensai.starbusproject.Itineraire_requete">
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ITINERAIRES"
-            android:layout_gravity="center_horizontal"
+            android:text="ITINÉRAIRES"
             />
     </LinearLayout>
 
@@ -31,9 +30,12 @@
             android:text="Départ : " />
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,12 +43,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Arrêt : " />
+            android:text="Destination : " />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,10 +60,39 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Direction : " />
-        <TextView
+            android:text="À partir de : " />
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ligne : " />
+            android:text="" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HORAIRES"
+            android:id="@+id/bou_cher_hor"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Retour"
+            android:id="@+id/bou_ret_hor_main"/>
+    </RelativeLayout>
+
 </LinearLayout>
