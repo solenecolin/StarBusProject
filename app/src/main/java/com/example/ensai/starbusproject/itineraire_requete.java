@@ -8,18 +8,20 @@ import android.widget.Button;
 
 public class itineraire_requete extends AppCompatActivity implements View.OnClickListener {
 
+    Button bou_res = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itineraire_requete);
-        Button button = (Button) findViewById(R.id.itineraire_chercher);
-        button.setOnClickListener(this);
+        bou_res = (Button) findViewById(R.id.bou_itineraire_chercher);
+        bou_res.setOnClickListener(this);
     }
 
-    @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, itineraire_resultat.class);
-        intent.putExtra("depart", 42);
-        startActivity(intent);
+        if (v.getId() == R.id.bou_itineraire_chercher) {
+            Intent i = new Intent(this, itineraire_resultat.class);
+            startActivity(i);
+        }
     }
 }

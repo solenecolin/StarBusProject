@@ -12,8 +12,6 @@ public class itineraire_resultat extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itineraire_resultat);
-        Button button = (Button) findViewById(R.id.itineraire_chercher);
-        button.setOnClickListener(this);
     }
 
     @Override
