@@ -14,11 +14,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Itinéraires" />
+        android:text="Itinéraires"
+        android:id="@+id/bou_iti"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Horaires" />
+        android:text="Horaires"
+        android:id="@+id/bou_hor"/>
 
 </LinearLayout>
