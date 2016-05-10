@@ -19,6 +19,7 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, itineraire_resultat.class);
+        intent.putExtra("depart", 42);
         startActivity(intent);
     }
 }

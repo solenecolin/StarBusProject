@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
         }
         if (v.getId()==R.id.bou_hor){
-            Intent i = new Intent(this, Horaire_requete.class);
+            Intent i = new Intent(this, horaire_requete.class);
             startActivity(i);
         }
     }
