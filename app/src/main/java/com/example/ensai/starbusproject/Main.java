@@ -22,7 +22,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         bou_hor = (Button) findViewById(R.id.bou_hor);
         bou_hor.setOnClickListener(this);
-        bou_iti = (Button) findViewById(R.id.bou_hor);
+        bou_iti = (Button) findViewById(R.id.bou_iti);
         bou_iti.setOnClickListener(this);
     }
 
