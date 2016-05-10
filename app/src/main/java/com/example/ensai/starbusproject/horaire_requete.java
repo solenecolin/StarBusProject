@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Horaire_requete extends AppCompatActivity implements View.OnClickListener{
+public class horaire_requete extends AppCompatActivity implements View.OnClickListener{
 
     Button bou_res = null;
 
@@ -19,7 +19,7 @@ public class Horaire_requete extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.bou_res) {
+        if (v.getId() == R.id.bou_cher_hor) {
             Intent i = new Intent(this, horaire_resultat.class);
             startActivity(i);
         }
