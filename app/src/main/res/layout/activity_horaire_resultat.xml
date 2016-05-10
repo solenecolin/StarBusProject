@@ -68,7 +68,7 @@
         android:layout_gravity="center_horizontal">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text=""/>
     </LinearLayout>
 
@@ -83,15 +83,15 @@
             android:id="@+id/bou_actu_hor"/>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_height="wrap_content">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Retour"
-            android:id="@+id/bou_ret_hor_res"/>
-    </LinearLayout>
+            android:id="@+id/bou_ret_hor_res"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
 </LinearLayout>
