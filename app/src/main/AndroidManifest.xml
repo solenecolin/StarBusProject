@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Horaire_requete"></activity>
+        <activity android:name=".Horaire_requete" />
+        <activity android:name=".Itineraire_requete"></activity>
     </application>
 
 </manifest>
