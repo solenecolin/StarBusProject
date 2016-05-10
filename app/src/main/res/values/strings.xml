@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StarBusProject</string>
+    <string name="title_activity_itineraire_resultat">itineraire_resultat</string>
 </resources>

@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Horaire_requete" />
-        <activity android:name=".Itineraire_requete"></activity>
+        <activity android:name=".itineraire_requete" />
+        <activity android:name=".itineraire_resultat"></activity>
     </application>
 
 </manifest>
