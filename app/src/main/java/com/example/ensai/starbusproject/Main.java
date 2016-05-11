@@ -17,6 +17,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
     Button bou_hor = null;
     Button bou_iti = null;
+    Button bou_geo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         bou_hor.setOnClickListener(this);
         bou_iti = (Button) findViewById(R.id.bou_iti);
         bou_iti.setOnClickListener(this);
+        bou_geo = (Button) findViewById(R.id.bou_geo);
+        bou_geo.setOnClickListener(this);
     }
 
     public void onClick(View v){
@@ -37,5 +40,10 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, horaire_requete.class);
             startActivity(i);
         }
+        if (v.getId()==R.id.bou_geo){
+            Intent i = new Intent(this, activity_maps.class);
+            startActivity(i);
+        }
+
     }
 }
