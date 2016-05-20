@@ -2,4 +2,8 @@
     <string name="app_name">StarBusProject</string>
     <string name="title_activity_itineraire_resultat">itineraire_resultat</string>
     <string name="title_activity_activity_maps">Map</string>
+    <string name="server_client_id">  279647671662-knsua036gfkufnbsh4vui3mt0fc8mm7i.apps.googleusercontent.com </string>
+    <string name="code">  SeygLGhKDMePWsNO_45ih9aV  </string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_carte_localisation">Map</string>
 </resources>

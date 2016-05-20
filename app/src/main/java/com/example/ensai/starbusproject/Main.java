@@ -40,10 +40,10 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, horaire_requete.class);
             startActivity(i);
         }
-        if (v.getId()==R.id.bou_geo){
-            Intent i = new Intent(this, activity_maps.class);
-            startActivity(i);
-        }
+      //  if (v.getId()==R.id.bou_geo){
+        //    Intent i = new Intent(this, carte_localisation.class);
+       //     startActivity(i);
+      //  }
 
     }
 }
