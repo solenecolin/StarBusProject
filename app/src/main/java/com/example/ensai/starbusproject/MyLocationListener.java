@@ -60,15 +60,13 @@ public class MyLocationListener implements LocationListener {
 
         checkPermission();
 
-
-
-
-
     }
+
+
     public void checkPermission(){
         if (ActivityCompat.checkSelfPermission(contexte, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(contexte, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            Log.e("location", "Erreur de Permission, demande à l'utilistateur !");
+            Log.e("location", "Erreur de Permission, demande à l'utilisateur !");
             ActivityCompat.requestPermissions((Activity) contexte,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             Log.i("location", " demandé à l'utilistateur !");
