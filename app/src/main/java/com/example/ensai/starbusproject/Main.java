@@ -62,4 +62,25 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
       //  }
 
     }
+
+    /* requete pour la localisation des stations proches*/
+    private final String metroProche = "http://data.keolis-rennes.com/json/?cmd=getmetrostations&param[mode]=proximity&param[type]=coords&param[lat]=48.09511&param[lng]=-1.6788&version=2.0&key=1RJLZ38TUFZSWTW";
+    private final String busProche = "http://data.keolis-rennes.com/json/?cmd=getstation&param[request]=proximity&param[mode]=coord&param[lat]=48.09511&param[long]=-1.6788&version=1.0&key=1RJLZ38TUFZSWTW";
+
+    private void RequeteMetro(String lat, String lng){
+        Requete requeteMetro = new Requete("getmetrostations", "2.0");
+        requeteMetro.addParam("mode","proximity");
+        requeteMetro.addParam("type","coords");
+        requeteMetro.addParam("lat", lat);
+        requeteMetro.addParam("lng", lng);
+    }
+
+    private void RequeteBus(String lat, String lng){
+        Requete requeteBus = new Requete("getmetrostations", "1.0");
+        requeteBus.addParam("request","proximity");
+        requeteBus.addParam("mode","coord");
+        requeteBus.addParam("lat", lat);
+        requeteBus.addParam("long", lng);
+    }
+
 }
