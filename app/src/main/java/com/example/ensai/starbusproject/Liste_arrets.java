@@ -24,7 +24,8 @@ public class Liste_arrets extends AppCompatActivity {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
         try {
             try {
-                URL adresse = new URL("http://data.keolis-rennes.com/json/?cmd=getbusnextdepartures&version=2.2&key=1RJLZ38TUFZSWTW&param[mode]=line&param[route]=0057&param[direction]=1");
+                URL adresse = new URL("http://data.keolis-rennes.com/j" +
+                        "son/?cmd=getbusnextdepartures&version=2.2&key=1RJLZ38TUFZSWTW&param[mode]=line&param[route]=0057&param[direction]=1");
                 HttpURLConnection connection = (HttpURLConnection) adresse.openConnection();
                 String contenu = readStream(connection.getInputStream());
                 connection.disconnect();
