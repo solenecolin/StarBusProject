@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-/*Bon j'ai envie de dire, le design est temporaire, mais comme on a que
-        deux boutons pour l'instant on n'a pas trop de possibilités...*/
+
+
 public class Main extends AppCompatActivity implements View.OnClickListener {
 
     Button bou_hor = null;
@@ -40,10 +40,10 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, horaire_requete.class);
             startActivity(i);
         }
-      //  if (v.getId()==R.id.bou_geo){
-        //    Intent i = new Intent(this, carte_localisation.class);
-       //     startActivity(i);
-      //  }
+        if (v.getId()==R.id.bou_geo){
+           Intent i = new Intent(this, activity_maps.class);
+           startActivity(i);
+       }
 
     }
 }

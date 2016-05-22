@@ -57,7 +57,6 @@ public class MyLocationListener implements LocationListener {
         Criteria criteria = new Criteria();
         Log.v("location",criteria.toString());
         String provider = service.getBestProvider(criteria, false);
-
         checkPermission();
 
     }
@@ -68,7 +67,7 @@ public class MyLocationListener implements LocationListener {
 
             Log.e("location", "Erreur de Permission, demande à l'utilisateur !");
             ActivityCompat.requestPermissions((Activity) contexte,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, getMyPermissionsRequestAccessFineLocation());
             Log.i("location", " demandé à l'utilistateur !");
 
         }else{
@@ -103,6 +102,7 @@ public class MyLocationListener implements LocationListener {
                 service.requestLocationUpdates(LocationManager.GPS_PROVIDER ,minTime, minDist,this);
                 location = service.getLastKnownLocation(provider);
                 Log.i("location", "nouvelle tentative pour obtenir la dernière position");
+                Log.i("location", location.toString());
             }else {
                 this.longitude = location.getLongitude();
 
