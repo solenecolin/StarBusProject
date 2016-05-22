@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*Bon j'ai envie de dire, le design est temporaire, mais comme on a que
         deux boutons pour l'instant on n'a pas trop de possibilités...*/
 public class Main extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +22,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     Button bou_hor = null;
     Button bou_iti = null;
     Button bou_geo = null;
+    private ArrayList<String> listeRoute = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +34,13 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         bou_iti.setOnClickListener(this);
         bou_geo = (Button) findViewById(R.id.bou_geo);
         bou_geo.setOnClickListener(this);
+        listeRoute.addAll(RouteDAO.getRoutes(this));
     }
 
     public void onClick(View v){
         if (v.getId()==R.id.bou_iti){
             Intent i = new Intent(this, itineraire_requete.class);
+            i.putStringArrayListExtra("listeRoute", listeRoute);
             startActivity(i);
         }
         if (v.getId()==R.id.bou_hor){
