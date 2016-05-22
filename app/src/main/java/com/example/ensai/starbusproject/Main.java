@@ -22,7 +22,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     Button bou_hor = null;
     Button bou_iti = null;
     Button bou_geo = null;
-    private ArrayList<String> listeRoute = new ArrayList<String>();
+    private ArrayList<Route> listeRoute = new ArrayList<Route>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +34,22 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         bou_iti.setOnClickListener(this);
         bou_geo = (Button) findViewById(R.id.bou_geo);
         bou_geo.setOnClickListener(this);
-        listeRoute.addAll(RouteDAO.getRoutes(this));
+        listeRoute = RouteDAO.getRoutes(this);
     }
 
     public void onClick(View v){
         if (v.getId()==R.id.bou_iti){
             Intent i = new Intent(this, itineraire_requete.class);
-            i.putStringArrayListExtra("listeRoute", listeRoute);
+            Bundle b = new Bundle();
+            b.putSerializable("key", listeRoute);
+            i.putExtra("listeRoute", listeRoute);
             startActivity(i);
         }
         if (v.getId()==R.id.bou_hor){
             Intent i = new Intent(this, horaire_requete.class);
+            Bundle b = new Bundle();
+            b.putSerializable("key", listeRoute);
+            i.putExtra("listeRoute", listeRoute);
             startActivity(i);
         }
       //  if (v.getId()==R.id.bou_geo){

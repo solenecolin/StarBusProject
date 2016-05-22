@@ -14,8 +14,8 @@ import android.content.Context;
 
 public class RouteDAO{
 
-    public static List<Route> getRoutes(Context context) {
-        List<Route> routes = new ArrayList<Route>();
+    public static ArrayList<Route> getRoutes(Context context) {
+        ArrayList<Route> routes = new ArrayList<Route>();
         try {
             InputStream stream = context.getResources().openRawResource(R.raw.routes);
             Iterator<CSVRecord> iterateur = new CSVParser(new InputStreamReader(stream), CSVFormat.DEFAULT).iterator();

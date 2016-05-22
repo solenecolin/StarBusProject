@@ -1,10 +1,9 @@
 package com.example.ensai.starbusproject;
 
-/**
- * Created by ensai on 10/05/16.
- */
+import java.io.Serializable;
 
-public class Route {
+
+public class Route implements Serializable {
     public String route_short_name;
     public String route_long_name;
 
