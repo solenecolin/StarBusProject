@@ -23,6 +23,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     Button bou_iti = null;
     Button bou_geo = null;
     private ArrayList<Route> listeRoute = new ArrayList<Route>();
+    private ArrayList<String> listeNomRoute = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         bou_geo = (Button) findViewById(R.id.bou_geo);
         bou_geo.setOnClickListener(this);
         listeRoute = RouteDAO.getRoutes(this);
+        listeNomRoute = RouteDAO.getNomRoutes(this);
     }
 
     public void onClick(View v){
@@ -43,6 +45,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Bundle b = new Bundle();
             b.putSerializable("key", listeRoute);
             i.putExtra("listeRoute", listeRoute);
+            i.putStringArrayListExtra("listeNomRoute", listeNomRoute);
             startActivity(i);
         }
         if (v.getId()==R.id.bou_hor){
@@ -50,6 +53,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Bundle b = new Bundle();
             b.putSerializable("key", listeRoute);
             i.putExtra("listeRoute", listeRoute);
+            i.putStringArrayListExtra("listeNomRoute", listeNomRoute);
             startActivity(i);
         }
       //  if (v.getId()==R.id.bou_geo){

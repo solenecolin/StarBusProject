@@ -14,6 +14,28 @@ import android.content.Context;
 
 public class RouteDAO{
 
+    public static ArrayList<String> getNomRoutes(Context context) {
+        ArrayList<String> nomRoutes = new ArrayList<String>();
+        try {
+            InputStream stream = context.getResources().openRawResource(R.raw.routes);
+            Iterator<CSVRecord> iterateur = new CSVParser(new InputStreamReader(stream), CSVFormat.DEFAULT).iterator();
+            CSVRecord enregistrementCourant = null;
+            iterateur.next();
+            while (iterateur.hasNext()) {
+                String chaine = new String();
+                enregistrementCourant = iterateur.next();
+                chaine = enregistrementCourant.get(2);
+                chaine = chaine + enregistrementCourant.get(3);
+                nomRoutes.add(chaine);
+            }
+            stream.close();
+        }
+        catch (Exception e) {
+
+        }
+        return nomRoutes;
+    }
+
     public static ArrayList<Route> getRoutes(Context context) {
         ArrayList<Route> routes = new ArrayList<Route>();
         try {
