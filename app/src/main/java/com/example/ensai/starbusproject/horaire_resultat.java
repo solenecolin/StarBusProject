@@ -136,7 +136,7 @@ public class horaire_resultat extends AppCompatActivity {
                     arrets.add(arret);
                 }
                 catch (JSONException e) {
-                    Log.e("TP3", "Erreur", e);
+                    Log.e("SBP", "Erreur", e);
                 }
             }
             runOnUiThread(new Runnable() {
@@ -149,7 +149,7 @@ public class horaire_resultat extends AppCompatActivity {
             });
         }
         catch (Exception e) {
-            Log.e("TP3", "Erreur",e);
+            Log.e("SBP", "Erreur",e);
         }
     }
 

@@ -16,27 +16,30 @@ import java.util.Set;
 
 public class StopDAO {
 
-       /* public static ArrayList<Stop> getRoutes(Context context) {
-            ArrayList<Route> routes = new ArrayList<Route>();
+        public static ArrayList<Stop> getStops(Context context) {
+            ArrayList<Stop> stops = new ArrayList<Stop>();
             try {
-                InputStream stream = context.getResources().openRawResource(R.raw.routes);
+                InputStream stream = context.getResources().openRawResource(R.raw.stops);
                 Iterator<CSVRecord> iterateur = new CSVParser(new InputStreamReader(stream), CSVFormat.DEFAULT).iterator();
                 CSVRecord enregistrementCourant = null;
                 iterateur.next();
                 while (iterateur.hasNext()) {
-                    Route route = new Route();
+                    Stop stop = new Stop();
                     enregistrementCourant = iterateur.next();
-                    route.setRoute_short_name(enregistrementCourant.get(2));
-                    route.setRoute_long_name(enregistrementCourant.get(3));
-                    routes.add(route);
+                    stop.setStopId(enregistrementCourant.get(0));
+                    stop.setStopCode(enregistrementCourant.get(1));
+                    stop.setStopName(enregistrementCourant.get(2));
+                    stop.setStopLat(enregistrementCourant.get(4));
+                    stop.setStopLon(enregistrementCourant.get(5));
+                    stops.add(stop);
                 }
                 stream.close();
             }
             catch (Exception e) {
 
             }
-            return routes;
-        }*/
+            return stops;
+        }
 
 
         public static ArrayList<String> getNomStop(Context context){
