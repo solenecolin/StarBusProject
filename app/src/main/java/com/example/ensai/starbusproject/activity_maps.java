@@ -46,7 +46,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        myLocationListener.update(this);
+        myLocationListener.update(this, this);
         LatLng here = new LatLng(myLocationListener.getLatitude() ,  myLocationListener.getLongitude());
         Log.i("location", String.valueOf(myLocationListener.getLatitude()));
         mMap.addMarker(new MarkerOptions().position(here).title("Vous êtes là"));

@@ -1,5 +1,7 @@
 package com.example.ensai.starbusproject;
 
+import java.io.Serializable;
+
 /**
  * Created by ensai on 10/05/16.
  */
