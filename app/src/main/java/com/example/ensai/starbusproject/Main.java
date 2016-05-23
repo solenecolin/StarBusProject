@@ -16,6 +16,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     Button bou_geo = null;
     ArrayList<String> listeNomRoute = new ArrayList<>();
     ArrayList<String> listeNomArret = new ArrayList<>();
+    ArrayList<Route> listeRoute = new ArrayList<>();
+    ArrayList<Stop> listeStop = new ArrayList<Stop>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         bou_iti.setOnClickListener(this);
         bou_geo = (Button) findViewById(R.id.bou_geo);
         bou_geo.setOnClickListener(this);
-        ArrayList<Route> listeRoute = (RouteDAO.getRoutes(this));
+        listeRoute = (RouteDAO.getRoutes(this));
+        listeStop = (StopDAO.getStops(this));
         listeNomRoute = (RouteDAO.getNomRoute(this));
         listeNomArret = (StopDAO.getNomStop(this));
     }
@@ -37,18 +40,27 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, itineraire_requete.class);
             i.putStringArrayListExtra("route", listeNomRoute);
             i.putStringArrayListExtra("stop", listeNomArret);
+            Bundle b = new Bundle();
+            b.putSerializable("key", listeStop);
+            i.putExtra("listeStop", b);
             startActivity(i);
         }
         if (v.getId()==R.id.bou_hor){
             Intent i = new Intent(this, horaire_requete.class);
             i.putStringArrayListExtra("route", listeNomRoute);
             i.putStringArrayListExtra("stop", listeNomArret);
+            Bundle b = new Bundle();
+            b.putSerializable("key", listeStop);
+            i.putExtra("listeStop", b);
             startActivity(i);
         }
         if (v.getId()==R.id.bou_geo){
            Intent i = new Intent(this, activity_maps.class);
             i.putStringArrayListExtra("route", listeNomRoute);
             i.putStringArrayListExtra("stop", listeNomArret);
+            Bundle b = new Bundle();
+            b.putSerializable("key", listeStop);
+            i.putExtra("listeStop", b);
            startActivity(i);
        }
 

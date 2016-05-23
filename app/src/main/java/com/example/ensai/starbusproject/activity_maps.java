@@ -12,13 +12,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class activity_maps extends FragmentActivity implements OnMapReadyCallback {
 
+    ArrayList<Stop> listeStop = new ArrayList<Stop>();
     private GoogleMap mMap;
     MyLocationListener myLocationListener  = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        listeStop = (ArrayList<Stop>)(getIntent().getBundleExtra("listeStop").getSerializable("key"));
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

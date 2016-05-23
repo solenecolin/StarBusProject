@@ -1,6 +1,8 @@
 package com.example.ensai.starbusproject;
 
-public class Stop {
+import java.io.Serializable;
+
+public class Stop implements Serializable {
     private String stopId, stopCode, stopName, stopDesc, stopLat, stopLon;
 
     public String getStopId() {
