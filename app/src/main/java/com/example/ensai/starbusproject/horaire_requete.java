@@ -49,9 +49,6 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
         bou_res.setOnClickListener(this);
     }
 
-    private static final String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
 
     public void onClick(View v) {
         try {
