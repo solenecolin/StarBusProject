@@ -1,12 +1,8 @@
 package com.example.ensai.starbusproject;
 
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,14 +24,15 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         myLocationListener = new MyLocationListener();
-
         mapFragment.getMapAsync(this);
 
     }
 
     public void updatePosition( double latitude, double longitude){
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).title("Vous êtes ici"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Vous êtes ici"));
     }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -49,12 +46,14 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        myLocationListener.update(this);
+        myLocationListener.update(this, this);
         LatLng here = new LatLng(myLocationListener.getLatitude() ,  myLocationListener.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(here).title("Vous êtes ici"));
+        Log.i("location", String.valueOf(myLocationListener.getLatitude()));
+        mMap.addMarker(new MarkerOptions().position(here).title("Vous êtes là"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
     }
+
+
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) { //PAS AU BON ENDROIT
         switch (requestCode) {
@@ -79,4 +78,5 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
             // permissions this app might request
         }
     }
+
 }

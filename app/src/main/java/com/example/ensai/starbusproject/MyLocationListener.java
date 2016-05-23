@@ -13,7 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 /**
- * Created by ensai on 20/05/16.
+ * Created by ensai on 10/05/16.
  */
 public class MyLocationListener implements LocationListener {
 
@@ -21,6 +21,7 @@ public class MyLocationListener implements LocationListener {
     private Double longitude = (double) 0; //todo : mettre null
     private Double latitude = (double) 0; //todo : mettre null
     private Context contexte;
+    private activity_maps mapAct;
 
     @Override
     public void onLocationChanged(Location location) {
@@ -33,7 +34,7 @@ public class MyLocationListener implements LocationListener {
         Log.i("location", latitudetxt);
         double speed = location.getSpeed(); //spedd in meter/minute
         speed = (speed * 3600) / 1000;      // speed in km/minute
-        activity_maps mapAct = (activity_maps) contexte;
+
         mapAct.updatePosition(latitude,longitude);
 
     }
@@ -50,8 +51,9 @@ public class MyLocationListener implements LocationListener {
         return latitude;
     }
 
-    public void update(final Context context) {
+    public void update(final Context context, activity_maps mapActiv) {
         this.contexte = context;
+        this.mapAct = mapActiv;
         Log.i("location", "Mise à jour !");
         LocationManager service = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -60,13 +62,15 @@ public class MyLocationListener implements LocationListener {
 
         checkPermission();
 
+
+
+
+
     }
-
-
     public void checkPermission(){
         if (ActivityCompat.checkSelfPermission(contexte, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(contexte, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            Log.e("location", "Erreur de Permission, demande à l'utilisateur !");
+            Log.e("location", "Erreur de Permission, demande à l'utilistateur !");
             ActivityCompat.requestPermissions((Activity) contexte,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             Log.i("location", " demandé à l'utilistateur !");

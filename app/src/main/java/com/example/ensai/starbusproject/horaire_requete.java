@@ -21,37 +21,33 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
     String ligne = null;
     String arret = null;
     String direction = null;
-    private static final String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
-    ArrayList<Route> listeRoute = new ArrayList<Route>();
-    ArrayList<String> listeNomRoute = new ArrayList<String>();
+    ArrayList<String> listeRoute = new ArrayList<>();
+    ArrayList<String> listeStop = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayList<Route> listeRoute = (ArrayList<Route>)(getIntent().getBundleExtra("listeRoute").getSerializable("key"));
-        // permet de récuperer la liste des routes
-        listeNomRoute = getIntent().getStringArrayListExtra("listeNomRoute");
         setContentView(R.layout.activity_horaire_requete);
         bou_res = (Button) findViewById(R.id.bou_cher_hor);
         bou_res.setOnClickListener(this);
         champ_ligne = (EditText) findViewById(R.id.horaire_ligne);
         champ_arret = (EditText) findViewById(R.id.horaire_arret);
         champ_direction = (EditText) findViewById(R.id.champ_direction);
+        listeRoute = getIntent().getStringArrayListExtra("route");
+        listeStop = getIntent().getStringArrayListExtra("stop");
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         final AutoCompleteTextView ligne_demandee = (AutoCompleteTextView) findViewById(R.id.horaire_ligne);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, listeRoute);
         ligne_demandee.setAdapter(adapter);
 
         final AutoCompleteTextView arret_demande = (AutoCompleteTextView) findViewById(R.id.horaire_arret);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+                android.R.layout.simple_dropdown_item_1line, listeStop);
         arret_demande.setAdapter(adapter2);
+        bou_res.setOnClickListener(this);
     }
-
 
 
     public void onClick(View v) {

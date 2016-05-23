@@ -3,7 +3,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -13,28 +12,6 @@ import android.content.Context;
 
 
 public class RouteDAO{
-
-    public static ArrayList<String> getNomRoutes(Context context) {
-        ArrayList<String> nomRoutes = new ArrayList<String>();
-        try {
-            InputStream stream = context.getResources().openRawResource(R.raw.routes);
-            Iterator<CSVRecord> iterateur = new CSVParser(new InputStreamReader(stream), CSVFormat.DEFAULT).iterator();
-            CSVRecord enregistrementCourant = null;
-            iterateur.next();
-            while (iterateur.hasNext()) {
-                String chaine = new String();
-                enregistrementCourant = iterateur.next();
-                chaine = enregistrementCourant.get(2);
-                chaine = chaine + enregistrementCourant.get(3);
-                nomRoutes.add(chaine);
-            }
-            stream.close();
-        }
-        catch (Exception e) {
-
-        }
-        return nomRoutes;
-    }
 
     public static ArrayList<Route> getRoutes(Context context) {
         ArrayList<Route> routes = new ArrayList<Route>();
@@ -56,6 +33,28 @@ public class RouteDAO{
 
         }
         return routes;
+    }
+
+
+    public static ArrayList<String> getNomRoute(Context context){
+        ArrayList<String> listeNomRoute = new ArrayList<String>();
+        try {
+            InputStream stream = context.getResources().openRawResource(R.raw.routes);
+            Iterator<CSVRecord> iterateur = new CSVParser(new InputStreamReader(stream), CSVFormat.DEFAULT).iterator();
+            CSVRecord enregistrementCourant = null;
+            iterateur.next();
+            while (iterateur.hasNext()) {
+                String nomRoute = new String();
+                enregistrementCourant = iterateur.next();
+                nomRoute = enregistrementCourant.get(3);
+                listeNomRoute.add(nomRoute);
+            }
+            stream.close();
+        }
+        catch (Exception e) {
+
+        }
+        return listeNomRoute;
     }
 }
 
