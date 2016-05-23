@@ -15,10 +15,10 @@ public class itineraire_resultat extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
         setContentView(R.layout.activity_itineraire_resultat);
-        champ_depart = (TextView) findViewById(R.id.itineraire_depart);
-        champ_arrivee = (TextView) findViewById(R.id.itineraire_destination);
+        Intent intent = getIntent();
+        champ_depart = (TextView) findViewById(R.id.champ_dir);
+        champ_arrivee = (TextView) findViewById(R.id.champ_arr);
         champ_depart.setText(intent.getStringExtra("depart"));
         champ_arrivee.setText(intent.getStringExtra("arrivee"));
     }
