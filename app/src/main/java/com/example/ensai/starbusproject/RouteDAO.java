@@ -23,6 +23,7 @@ public class RouteDAO{
             while (iterateur.hasNext()) {
                 Route route = new Route();
                 enregistrementCourant = iterateur.next();
+                route.setRouteId(enregistrementCourant.get(0));
                 route.setRoute_short_name(enregistrementCourant.get(2));
                 route.setRoute_long_name(enregistrementCourant.get(3));
                 routes.add(route);
@@ -46,7 +47,7 @@ public class RouteDAO{
             while (iterateur.hasNext()) {
                 String nomRoute = new String();
                 enregistrementCourant = iterateur.next();
-                nomRoute = enregistrementCourant.get(2);
+                nomRoute = enregistrementCourant.get(0);
                 listeNomRoute.add(nomRoute);
             }
             stream.close();

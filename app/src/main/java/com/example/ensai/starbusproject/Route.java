@@ -9,10 +9,14 @@ import java.io.Serializable;
 public class Route implements Serializable {
     public String route_short_name;
     public String route_long_name;
+    public String id;
 
 
     public Route(){
     }
+
+    public String getRouteId(String id){return id;}
+    public void setRouteId(String id){this.id=id;}
 
     public String getRoute_short_name(String route_short_name){
         return route_short_name;

@@ -30,12 +30,12 @@
                 android:layout_height="wrap_content"
                 android:text="Ligne :     "
                 />
-        <AutoCompleteTextView
-            android:inputType="number"
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="                                          "
-            android:id="@+id/horaire_ligne"/>
+            android:id="@+id/spinner">
+
+        </Spinner>
     </LinearLayout>
 
 
