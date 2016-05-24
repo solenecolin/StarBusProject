@@ -2,6 +2,7 @@ package com.example.ensai.starbusproject;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
@@ -78,6 +79,8 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
             requete.addParam("mode", "coord");
             requete.addParam("lat", String.valueOf(here.latitude));
             requete.addParam("long", String.valueOf(here.longitude));
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
 
             String urlStr = "http://data.keolis-rennes.com/json/?cmd=getstation&version=1.0&key=1RJLZ38TUFZSWTW&param[request]=proximity&param[mode]=coord&param[lat]=0&param[long]=0";
             URL url = new URL(urlStr);
