@@ -31,10 +31,8 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
         bou_res = (Button) findViewById(R.id.bou_cher_hor);
         bou_res.setOnClickListener(this);
         champ_ligne = (EditText) findViewById(R.id.horaire_ligne);
-        champ_arret = (EditText) findViewById(R.id.horaire_arret);
         champ_direction = (EditText) findViewById(R.id.champ_direction);
         listeRoute = getIntent().getStringArrayListExtra("route");
-
         listeStop = getIntent().getStringArrayListExtra("stop");
 
 
@@ -48,7 +46,6 @@ public class horaire_requete extends AppCompatActivity implements View.OnClickLi
                 android.R.layout.simple_dropdown_item_1line, listeStop);
         arret_demande.setAdapter(adapter2);*/
 
-        bou_res.setOnClickListener(this);
     }
 
 
