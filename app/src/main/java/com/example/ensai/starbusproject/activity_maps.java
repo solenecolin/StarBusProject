@@ -75,6 +75,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
         Location locationProche = new Location("Test");
         locationProche.setLatitude(latlngProche.latitude);
         locationProche.setLongitude(latlngProche.longitude);
+        String nomStation = "Dasyan";
         for (int i = 0; i < stops.size(); i++) {
 
                 Stop stopactuel = stops.get(i);
@@ -89,6 +90,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
             if(
                     locationUser.distanceTo(locationProche) >locationUser.distanceTo(locationStation)){
                 locationProche = locationStation;
+                nomStation = stopactuel.getStopName();
             }
         }
         LatLng latlngPlusProche = new LatLng(locationProche.getLatitude(), locationProche.getLongitude());
