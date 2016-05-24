@@ -54,7 +54,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         myLocationListener.update(this, this);
-        LatLng here = new LatLng(48.01,-1.7);
+        LatLng here = new LatLng(48.050900, -1.742383);
         Log.i("location", String.valueOf(myLocationListener.getLatitude()));
         mMap.addMarker(new MarkerOptions().position(here).title("Vous êtes là"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
@@ -94,7 +94,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
             }
         }
         LatLng latlngPlusProche = new LatLng(locationProche.getLatitude(), locationProche.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(latlngPlusProche).title("Station proche"));
+        mMap.addMarker(new MarkerOptions().position(latlngPlusProche).title(nomStation));
         float zoomLevel = (float) 16.0; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here, zoomLevel));
     }
