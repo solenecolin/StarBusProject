@@ -42,7 +42,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             i.putStringArrayListExtra("stop", listeNomArret);
             Bundle b = new Bundle();
             b.putSerializable("key", listeStop);
-            b.putSerializable("keyRoute", listeRoute);
             i.putExtra("listeStop", b);
             startActivity(i);
         }
@@ -51,7 +50,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             i.putStringArrayListExtra("route", listeNomRoute);
             i.putStringArrayListExtra("stop", listeNomArret);
             Bundle b = new Bundle();
-            b.putSerializable("key", listeStop);
             b.putSerializable("keyRoute", listeRoute);
             i.putExtra("listeStop", b);
             startActivity(i);
@@ -62,7 +60,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             i.putStringArrayListExtra("stop", listeNomArret);
             Bundle b = new Bundle();
             b.putSerializable("key", listeStop);
-            b.putSerializable("keyRoute", listeRoute);
             i.putExtra("listeStop", b);
            startActivity(i);
        }

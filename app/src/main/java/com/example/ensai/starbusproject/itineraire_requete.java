@@ -33,8 +33,8 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itineraire_requete);
         bou_res = (Button) findViewById(R.id.bou_itineraire_chercher);
-        listeRoute = getIntent().getStringArrayListExtra("route");
-        listeStop = getIntent().getStringArrayListExtra("stop");
+        listeRoute = getIntent().getStringArrayListExtra("keyRoute");
+        listeStop = getIntent().getStringArrayListExtra("key");
         champ_depart = (EditText) findViewById(R.id.itineraire_depart);
         champ_arrivee = (EditText) findViewById(R.id.itineraire_destination);
         itineraire_heure = (EditText) findViewById(R.id.itineraire_heure);

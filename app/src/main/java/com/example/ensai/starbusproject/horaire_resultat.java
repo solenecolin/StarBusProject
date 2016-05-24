@@ -31,7 +31,6 @@ public class horaire_resultat extends AppCompatActivity {
 
 
     private TextView res_ligne = null;
-    private TextView res_arret = null;
     private TextView res_direction = null;
     ListView liste;
     ArretAdapter adapter;
@@ -45,10 +44,8 @@ public class horaire_resultat extends AppCompatActivity {
         setContentView(R.layout.activity_horaire_resultat);
         Intent intent = getIntent();
         res_ligne = (TextView) findViewById(R.id.res_ligne);
-        res_arret = (TextView) findViewById(R.id.res_arret);
         res_direction = (TextView) findViewById(R.id.res_direction);
         res_ligne.setText(intent.getStringExtra("ligne"));
-        res_arret.setText(intent.getStringExtra("arret"));
         res_direction.setText(intent.getStringExtra("direction"));
         liste = (ListView) findViewById(R.id.liste);
         adapter = new ArretAdapter(this,arrets);
