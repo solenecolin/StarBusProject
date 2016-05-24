@@ -93,6 +93,8 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
         }
         LatLng latlngPlusProche = new LatLng(locationProche.getLatitude(), locationProche.getLongitude());
         mMap.addMarker(new MarkerOptions().position(latlngPlusProche).title("Station proche"));
+        float zoomLevel = (float) 16.0; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here, zoomLevel));
     }
 
     private String readStream(InputStream in) throws IOException {
