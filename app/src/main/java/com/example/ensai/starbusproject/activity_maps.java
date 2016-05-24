@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,24 +81,27 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
 
             String urlStr = "http://data.keolis-rennes.com/json/?cmd=getstation&version=1.0&key=1RJLZ38TUFZSWTW&param[request]=proximity&param[mode]=coord&param[lat]=0&param[long]=0";
             URL url = new URL(urlStr);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            String contenu = null;
             try {
-                InputStream in = new BufferedInputStream(connection.getInputStream());
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 readStream(in);
+                contenu = readStream(urlConnection.getInputStream());}
+            catch (MalformedURLException e) {
+                Log.e("tag", "URL invalide", e);
             }
-                finally{
-                connection.disconnect();
+            catch(IOException e){
+                Log.e("tag", "Pas de connexion réseau", e);
+            }
+                finally {
+                    urlConnection.disconnect();
                 }
 
 
-
-
-            String contenu = readStream(connection.getInputStream());
             Log.i("location", contenu);
 
-            connection.disconnect();
             JSONObject object = new JSONObject(contenu);
-            final JSONArray array = object.getJSONObject("opendata").getJSONObject("answer").getJSONObject("data").getJSONArray("stopline");
+            final JSONArray array = object.getJSONObject("opendata").getJSONObject("answer").getJSONObject("data").getJSONArray("latitude");
             final List<Arret> arrets = new ArrayList<Arret>();
             for (int i = 0; i < array.length(); i++) {
                 try {
