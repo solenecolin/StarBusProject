@@ -52,19 +52,6 @@
             android:id="@+id/champ_arr"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="À partir de : " />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
