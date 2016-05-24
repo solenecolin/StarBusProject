@@ -53,7 +53,7 @@ public class ArretAdapter extends BaseAdapter {
         Arret arret = (Arret) getItem(position);
         TextView nom = (TextView) view.findViewById(R.id.nom);
         TextView passage = (TextView) view.findViewById(R.id.passage);
-        nom.setText(arret.getStop());
+        nom.setText((CharSequence) arret.getStop());
         passage.setText((arret.getDepartures().size() == 0 ? "Pas de passage" : arret.getDepartures().get(0).getContent().toString()));
         return view;
     }

@@ -23,6 +23,8 @@ public class MyLocationListener implements LocationListener {
     private Context contexte;
     private activity_maps mapAct;
 
+    private Location location;
+
     @Override
     public void onLocationChanged(Location location) {
 
@@ -54,16 +56,8 @@ public class MyLocationListener implements LocationListener {
     public void update(final Context context, activity_maps mapActiv) {
         this.contexte = context;
         this.mapAct = mapActiv;
-        Log.i("location", "Mise à jour !");
-        LocationManager service = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        Log.v("location",criteria.toString());
-        String provider = service.getBestProvider(criteria, false);
-
+        mapAct.updatePosition(this.latitude,this.longitude);
         checkPermission();
-
-
-
 
 
     }
@@ -99,20 +93,29 @@ public class MyLocationListener implements LocationListener {
         Log.i("location","avant Maj");
         try{
 
-            Location location = service.getLastKnownLocation(provider);//ECHEC;
-            if (location==null) {
+            Location location = service.getLastKnownLocation(provider);
+            int count=0;
+            while (location==null && count<10) {
                 Log.e("location", "Erreur : impossible d'obtenir la dernière position");
-                long minTime = 1;
-                float minDist = 1 ;
-                service.requestLocationUpdates(LocationManager.GPS_PROVIDER ,minTime, minDist,this);
-                location = service.getLastKnownLocation(provider);
-                Log.i("location", "nouvelle tentative pour obtenir la dernière position");
-            }else {
-                this.longitude = location.getLongitude();
+                long minTime = 10;
+                float minDist = 0 ;
 
+
+                service.requestLocationUpdates(LocationManager.GPS_PROVIDER ,minTime, minDist,this);
+                location =  service.getLastKnownLocation(provider);
+
+                Log.i("location", "Provider : "+provider);
+                Log.i("location", "Location : "+location);
+                Log.i("location", "nouvelle tentative pour obtenir la dernière position, count = "+ count);
+                count++;
+            }
+            if (location!=null){
+                this.longitude = location.getLongitude();
                 this.latitude = location.getLatitude();
+                this.location = location;
                 Log.i("location", "apres Maj");
             }
+
         }catch (SecurityException se){
             Log.i("location","ERREUR PERMISSION");
         }
