@@ -1,8 +1,8 @@
 package com.example.ensai.starbusproject;
 
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
@@ -13,20 +13,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class activity_maps extends FragmentActivity implements OnMapReadyCallback {
 
@@ -71,67 +62,37 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void afficherStationsProches(GoogleMap googleMap, LatLng here) {
-        mMap=googleMap;
-        try {
-            Requete requete = new Requete("getstation", "1.0");
-            //http://data.keolis-rennes.com/json/?cmd=getstation&version=1.0&key=1RJLZ38TUFZSWTW&param[request]=proximity&param[mode]=coord&param[lat]=0&param[long]=0
-            requete.addParam("request", "proximity");
-            requete.addParam("mode", "coord");
-            requete.addParam("lat", String.valueOf(here.latitude));
-            requete.addParam("long", String.valueOf(here.longitude));
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
+        mMap = googleMap;
 
-            String urlStr = "http://data.keolis-rennes.com/json/?cmd=getstation&version=1.0&key=1RJLZ38TUFZSWTW&param[request]=proximity&param[mode]=coord&param[lat]=0&param[long]=0";
-            URL url = new URL(urlStr);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            String contenu = null;
-            try {
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                readStream(in);
-                contenu = readStream(urlConnection.getInputStream());}
-            catch (MalformedURLException e) {
-                Log.e("tag", "URL invalide", e);
+        StopDAO stopBDD = new StopDAO();
+        ArrayList<Stop> stops = stopBDD.getStops(this);
+        Location locationUser = new Location("Test");
+        locationUser.setLatitude(here.latitude);
+        locationUser.setLongitude(here.longitude);
+
+
+        LatLng latlngProche = new LatLng(5.01,-17);
+        Location locationProche = new Location("Test");
+        locationProche.setLatitude(latlngProche.latitude);
+        locationProche.setLongitude(latlngProche.longitude);
+        for (int i = 0; i < stops.size(); i++) {
+
+                Stop stopactuel = stops.get(i);
+                String latitude = stopactuel.getStopLat();
+                String longitude = stopactuel.getStopLon();
+                LatLng locationStation1 = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+            Location locationStation = new Location("Test");
+            locationStation.setLatitude(locationStation1.latitude);
+            locationStation.setLongitude(locationStation1.longitude);
+            Object distance = null;
+            Object distanceProche = null;
+            if(
+                    locationUser.distanceTo(locationProche) >locationUser.distanceTo(locationStation)){
+                locationProche = locationStation;
             }
-            catch(IOException e){
-                Log.e("tag", "Pas de connexion réseau", e);
-            }
-                finally {
-                    urlConnection.disconnect();
-                }
-
-
-            Log.i("location", contenu);
-
-            JSONObject object = new JSONObject(contenu);
-            final JSONArray array = object.getJSONObject("opendata").getJSONObject("answer").getJSONObject("data").getJSONArray("latitude");
-            final List<Arret> arrets = new ArrayList<Arret>();
-            for (int i = 0; i < array.length(); i++) {
-                try {
-                    JSONObject arretJSON = array.getJSONObject(i);
-                    Arret arret = new Arret(arretJSON);
-                    arrets.add(arret);
-                    String stop = arret.getStop();
-                    String latitude = null;
-                    String longitude = null;
-                    LatLng location = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-                    mMap.addMarker(new MarkerOptions().position(location).title("Station proche"));
-                }
-
-                catch (JSONException e) {
-                    Log.e("SBP", "Erreur", e);
-                }
-            }
-            runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-                }
-            });
         }
-        catch (Exception e) {
-            Log.e("SBP", "Erreur",e);
-        }
+        LatLng latlngPlusProche = new LatLng(locationProche.getLatitude(), locationProche.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latlngPlusProche).title("Station proche"));
     }
 
     private String readStream(InputStream in) throws IOException {
