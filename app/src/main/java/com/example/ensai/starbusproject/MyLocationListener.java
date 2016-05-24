@@ -56,7 +56,7 @@ public class MyLocationListener implements LocationListener {
     public void update(final Context context, activity_maps mapActiv) {
         this.contexte = context;
         this.mapAct = mapActiv;
-        mapAct.updatePosition(this.latitude,this.longitude);
+        mapAct.updatePosition(48.01,-1.7);
         checkPermission();
 
 

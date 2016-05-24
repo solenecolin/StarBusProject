@@ -61,7 +61,7 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         myLocationListener.update(this, this);
-        LatLng here = new LatLng(myLocationListener.getLatitude() ,  myLocationListener.getLongitude());
+        LatLng here = new LatLng(48.01,-1.7);
         Log.i("location", String.valueOf(myLocationListener.getLatitude()));
         mMap.addMarker(new MarkerOptions().position(here).title("Vous êtes là"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
@@ -77,11 +77,26 @@ public class activity_maps extends FragmentActivity implements OnMapReadyCallbac
             requete.addParam("mode", "coord");
             requete.addParam("lat", String.valueOf(here.latitude));
             requete.addParam("long", String.valueOf(here.longitude));
-            HttpURLConnection urlConnection = (HttpURLConnection) new URL(requete.getURL()).openConnection();
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            String reponse = readStream(in);
-            urlConnection.disconnect();
-            JSONObject object = new JSONObject(reponse);
+
+            String urlStr = "http://data.keolis-rennes.com/json/?cmd=getstation&version=1.0&key=1RJLZ38TUFZSWTW&param[request]=proximity&param[mode]=coord&param[lat]=0&param[long]=0";
+            URL url = new URL(urlStr);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = new BufferedInputStream(connection.getInputStream());
+                readStream(in);
+            }
+                finally{
+                connection.disconnect();
+                }
+
+
+
+
+            String contenu = readStream(connection.getInputStream());
+            Log.i("location", contenu);
+
+            connection.disconnect();
+            JSONObject object = new JSONObject(contenu);
             final JSONArray array = object.getJSONObject("opendata").getJSONObject("answer").getJSONObject("data").getJSONArray("stopline");
             final List<Arret> arrets = new ArrayList<Arret>();
             for (int i = 0; i < array.length(); i++) {
