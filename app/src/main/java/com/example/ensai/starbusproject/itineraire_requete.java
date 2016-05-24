@@ -37,7 +37,6 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
         listeStop = getIntent().getStringArrayListExtra("key");
         champ_depart = (EditText) findViewById(R.id.itineraire_depart);
         champ_arrivee = (EditText) findViewById(R.id.itineraire_destination);
-        itineraire_heure = (EditText) findViewById(R.id.itineraire_heure);
 
         final AutoCompleteTextView itineraire_depart = (AutoCompleteTextView) findViewById(R.id.itineraire_depart);
         ArrayAdapter<String> itineraire_depart_bdd = new ArrayAdapter<String>(this,
