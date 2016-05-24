@@ -34,7 +34,7 @@ public class itineraire_requete extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_itineraire_requete);
         bou_res = (Button) findViewById(R.id.bou_itineraire_chercher);
         listeRoute = getIntent().getStringArrayListExtra("keyRoute");
-        listeStop = getIntent().getStringArrayListExtra("key");
+        listeStop = getIntent().getStringArrayListExtra("stop");
         champ_depart = (EditText) findViewById(R.id.itineraire_depart);
         champ_arrivee = (EditText) findViewById(R.id.itineraire_destination);
 
